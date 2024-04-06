@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="textbox1" placeholder="name">
+    <input type="text" id="textbox2" placeholder="password">
+    <button id="button1" onclick="buttony()">Add</button>
+    <button id="showButton" onclick="toggleTable()">Show Table</button>
+    <table id="table1" style="display:none;">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>password</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        function buttony() {
+            var name = document.getElementById("textbox1").value;
+            var password = document.getElementById("textbox2").value;
+
+            if (name || password) {
+                var tablebody = document.querySelector("#table1 tbody");
+                var row = tablebody.insertRow();
+                var cel1 = row.insertCell(0);
+                var cel2 = row.insertCell(1);
+                cel1.textContent = name;
+                cel2.textContent = password;
+                document.getElementById("textbox1").value = '';
+                document.getElementById("textbox2").value = '';
+            }
+        }
+
+        function toggleTable() {
+            var table = document.getElementById("table1");
+            var showButton = document.getElementById("showButton");
+
+            if (table.style.display == "none") {
+                table.style.display = "table";
+                showButton.textContent = "Hide Table";
+            } else {
+                table.style.display = "none";
+                showButton.textContent = "Show Table";
+            }
+        }
+    </script>
+</body>
+</html>
